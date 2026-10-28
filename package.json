@@ -1,0 +1,60 @@
+{
+  "name": "karate-club-manager",
+  "version": "0.2.1",
+  "description": "Gestion du club ASAMB — Association Sportive des Arts Martiaux de Béjaïa",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "dependencies": {
+    "sql.js": "^1.15.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "dz.asamb.karateclub",
+    "productName": "ASAMB",
+    "copyright": "A.S.A.M.B — Béjaïa",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "logo.png",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/sql.js/dist/sql-wasm.wasm"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ASAMB",
+      "uninstallDisplayName": "ASAMB",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "language": "1036",
+      "artifactName": "ASAMB-Installateur-${version}.exe"
+    }
+  }
+}
